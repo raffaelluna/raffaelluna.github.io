@@ -60,9 +60,9 @@
 							<p>Após essa etapa, o modelo está pronto para ser empacotado. As bibliotecas utilizadas aqui foram <em>setuptools</em> em conjunto com <em>wheel</em>, não entrarei em mais detalhes sobre esta etapa, o que poderá ser assunto para outra postagem. Seguindo, o próxima etapa seria a construção de uma api que recebe uma requisição com dados em formato JSON e responde com a predição do modelo. Nessa API, três <em>endpoints</em> foram criados, um para saber a saúde da API, um para a versão e outro para entregar a predição.</p>
 							<script src="http://gist-it.appspot.com/https://github.com/raffaelluna/deploy-churn-project/blob/main/packages/ml_api/api/controller.py?slice=15:50&footer=minimal"></script>
 							<p>Nessa etapa, ainda, foram adicionados testes para garantir que tudo está funcionando como esperado.</p>
-							<script src="http://gist-it.appspot.com/https://github.com/raffaelluna/deploy-churn-project/blob/main/packages/ml_api/tests/test_controller.py?slice=8:40&footer=minimal"></script>
+							<script src="https://gist.github.com/raffaelluna/c4e0d7e36de9da7a4903c097d1f42f0a.js"></script>
 							<p>Com a API construída e todos os requisitos listados, chegou a hora de construir um contêiner utilizando o <em>Docker</em>. Esse contêiner vai ser represantado por uma imagem, que conterá todo o ambiente necessário para a reprodução da API e as instruções de configuração do servidor que estará rodando a API. </p>
-							<script src="http://gist-it.appspot.com/https://github.com/raffaelluna/deploy-churn-project/blob/main/Dockerfile?footer=minimal"></script>
+							<script src="https://gist.github.com/raffaelluna/66750f9dd9c87b70dbe9f8a86590e208.js"></script>
 							<p>E, finalmente, essa imagem seria distribuída em diversos servidores, os quais podem ser orquestrados através de uma aplicação como o Kubernetes. Desse modo, seria possível servir o modelo de forma escalável para garantir a disponibilidade do serviço.<p>
 							<p></p>
 							<p></p>
