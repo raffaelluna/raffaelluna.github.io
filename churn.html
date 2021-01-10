@@ -1,0 +1,330 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Prevendo Fuga de Clientes</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Raffael</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="about.html">Quem sou eu?</a></li>
+							<li><a href="contact.html">Fale comigo!</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>Reduzindo a fuga de clientes usando Machine Learning</h1>
+							<!--<span class="image main"><img src="images/churnmain.png" alt="" /></span>-->
+							<p>Imagine uma empresa cujos clientes começam a romper seus contratos e os gestores dessa empresa não sabem o que fazer. Agora imagine que os gestores dessa mesma empresa consigam detectar se um cliente irá se desvincular da empresa e, com isso, lançam incentivos para evitar essa perda. É claro que a segunda opção é muito mais <strong>vantajosa</strong> para os negócios de uma companhia e, por este motivo, a análise de fuga de clientes é tão importante.</p>
+							<p>Existem diversas formas de analisar o comportamento dos clientes para tentar prever se ele continuará vinculado à empresa, em que grande parte delas é orientado a <em>KPIs</em>  e levam em consideração o engajamento dos clientes, pedidos de suporte técnico e, até mesmo, o monitoramento de preços de outras empresas. Entretanto, o que eu venho trazer neste artigo é uma abordagem utilizando <strong>Ciência de Dados</strong> e <strong>Machine Learning</strong> para prever se um cliente entrará em <em>Churn</em>, isto é, em "fuga", ou não.</p>
+							<p>Neste projeto foi analisada a base de dados uma companhia fictícia extraída do Kaggle, <a href="https://www.kaggle.com/mervetorkan/churndataset" target="_blank" rel="noopener noreferrer">Churn Dataset</a>, como sugestão do blog <a href="https://sejaumdatascientist.com/" target="_blank" rel="noopener noreferrer">Seja um Data Scientist</a>, do <a href="https://www.linkedin.com/in/meigarom/" target="_blank" rel="noopener noreferrer">Meigarom Lopes</a>. Este projeto se aplica exclusivamente ao dados dessa empresa e não podem ser extrapolados para outras situações.</p>
+							<p>O <em>notebook </em>com todos os detalhes e o código do projeto você encontra no <a href="https://github.com/raffaelluna/churn-project/blob/main/projeto-churn.ipynb" target="_blank" rel="noopener noreferrer">meu GitHub</a>. Caso você tenha dificuldade em acessar o link anterior, pode tentar este <a href="https://nbviewer.jupyter.org/github/raffaelluna/churn-project/blob/main/projeto-churn.ipynb" target="_blank" rel="noopener noreferrer">link</a>.</p>
+							<p>Qualquer dúvida estou à disposição em raffael.luna@gmail.com ou no <a href="https://www.linkedin.com/in/raffael-luna-cardoso/" target="_blank" rel="noopener noreferrer">meu LinkedIn</a>.</p>
+							<h2>Os dados</h2>
+							<p>A base de dados contém informações de <strong>10.000 clientes</strong>, notadamente sua pontuação de crédito, idade, gênero, localização geográfica, o tempo em que permaneceu vinculado à empresa, o quanto o ele gastou, a quantidade de produtos adquiridos, se possui ou não cartão de crédito, se está ativo na empresa, a estimativa do seu salário e, é claro, se entrou em <em>Churn</em> ou não.</p>
+							<p>A taxa de fuga é calculada pegando a quantidade de clientes que romperam contrato ou deixaram de consumir os produtos da empresa em um dado período e dividindo pela quantidade de clientes no início desse período.</p>
+							<p>Seguindo com a análise exploratória desses dados, foi constatado que, neste conjunto, havia uma taxa de fuga de quase 20%, uma taxa consideravelmente elevada. Além disso, os seguintes pontos foram observados:</p>
+							<ul>
+								<li>69,9% dos clientes em Churn possuem cartão de crédito, enquanto 70,7% dos que <strong>não</strong> estão em Churn possuem cartão de crédito;</li>
+								<li>Dos clientes em fuga, aproximadamente 64% deles não são membros ativos, contra 44% dos que não estão em fuga.</li>
+							</ul>
+							<p>De cara percebemos que o fato de o cliente possuir ou não cartão de crédito parece não influenciar na sua permanência na empresa; diferentemente do seu nível de atividade, isto é, membros que são engajados na dinâmica da empresa tendem permanecer a elas vinculados.</p>
+							<p>A quantidade de itens adquiridos pelos clientes também parece ter relação com a fuga de clientes, uma vez que clientes que adquiriram 3 ou 4 produtos estão em Churn, na sua maior parte, enquanto clientes que possuem menos produtos tendem a continuar com seus contratos ativos.</p>
+							<p>Além do que já foi dito acima, o <strong>gênero</strong> parece também ter contribuição significativa na fuga de clientes.</p>
+							<span class="image fit"><img class="resize" src="https://media-exp1.licdn.com/dms/image/C4E12AQFtaLFDR29UFg/article-inline_image-shrink_1500_2232/0/1606827327838?e=1615420800&v=beta&t=qffxW-JXyo-djmLWxz-Rgo2sEiGAJ03_Qj1hwiIuzf8" alt="" /></span>
+							<p>Observe que interessante: a maior parte dos clientes que continuam ligados à empresa são do gênero masculino, porém, a maioria dos clientes em fuga são do feminino. Esse tipo de análise é muito importante, porque permite a equipe responsável oferecer incentivos diretamente neste nicho, como estratégia de redução da taxa de fuga.</p>
+							<p>Outro ponto que merece a nossa atenção é com relação a onde o cliente está localizado. O gráfico abaixo nos mostra que, dos clientes que não estão em <em>Churn, </em>mais da metade deles está na França, enquanto dos que se desligaram da empresa, 80% deles estão igualmente distribuídos entre a França e a Alemanha.</p>
+							<span class="image fit"><img class="resize" src="https://media-exp1.licdn.com/dms/image/C4E12AQH877gG1fQUuw/article-inline_image-shrink_1500_2232/0/1606830219144?e=1615420800&v=beta&t=ErLQcZ2Vtt_kLwdf_jGyV7UoR2k1Wb3v_FRTkgBVOC0" alt="" /></span>
+							<p>A etapa anterior consistiu na análise das variáveis categóricas do nosso conjunto de dados. Agora, passaremos a avaliar qual é a distribuição das variáveis numéricas quando dividimos o conjunto de dados entre clientes em fuga (<em>Churn</em>) ou não. O gráfico seguinte mostra a diferença entre as distribuições de densidade para as variáveis de idade - Age, pontuação de crédito - Credit Score, gasto do cliente - Balance, e seu salário estimado - Estimated Salary.</p>
+							<span class="image fit"><img class="resize" src="https://media-exp1.licdn.com/dms/image/C4E12AQEsdh-ebehbeg/article-inline_image-shrink_1500_2232/0/1606830973997?e=1615420800&v=beta&t=LzTjTYWSc6ZBYohdRFHTekVoJfuH43AX8XFxJGDppaU" alt="" /></span>
+							<p>Percebemos de imediato que não há diferença significativa nos padrões de pontuação de crédito e de salário estimado para clientes que cancelaram ou não seu contrato, o que, em certo ponto, é <strong>contra intuitivo</strong>, uma vez que clientes com maior pontuação de crédito e maiores salários tendem permanecer, enquanto aqueles com salários e pontuação de crédito inferiores tendem a sair.</p>
+							<p>Além disso, a idade e o quanto o cliente gastou possuem distribuições diferentes para clientes que permanecem ou não na empresa. Isso pode ser um indicativo de que estas variáveis são boa candidatas para predizer se um cliente permanecerá ou não no banco.</p>
+							<p>A análise realizada é corroborada pelo mapa de calor das correlações entre as variáveis, que mostram que as variáveis 'Age' e 'Balance' possuem correlação, ainda que seja baixa, com a variável 'Exited', que indica a fuga ou não do cliente.</p>
+							<span class="image fit"><img class="resize" src="https://media-exp1.licdn.com/dms/image/C4E12AQGE3VRwMfVXjA/article-inline_image-shrink_1500_2232/0/1606831489198?e=1615420800&v=beta&t=Ua7lPOPm6kGE1IsoHichXUjT9bv4hFnYzkzDWsR9fjU" alt="" /></span>
+							<p>Lembrando, novamente, que estes dados retratam a realidade da empresa em questão.</p>
+							<p>Finalizada a análise exploratória dos dados, é natural concluir que, nessa empresa, a quantidade de produtos, localização geográfica, se é membro ativo ou não, idade e gênero parecem exercer papel preponderante na previsão da fuga de clientes. Dito isso, podemos preceder com a construção e avaliação de um modelo de <strong>Machine Learning </strong>para cuidar do nosso problema.</p>
+							<h2>O Modelo</h2>
+							<p>A primeira etapa dessa parte do projeto não foi, de fato, a construção do modelo em si, mas sim uma engenharia de atributos para garantir que os dados estarão prontos para entrar no nosso modelo. Nesse contexto, foi realizado, primeiramente, a divisão do conjunto de dados em conjunto de teste e de treino, a fim de garantir de que não haveria vazamento de informação entre os conjuntos.</p>
+							<p><span class="image left"><img src="https://media-exp1.licdn.com/dms/image/C4E12AQFnlxtY_iEWIQ/article-inline_image-shrink_1500_2232/0/1606845972680?e=1615420800&v=beta&t=s_34NQw9yoBDN3Yb7MSkeCbOHWQjUfFEQckbzZMiKGQ" alt="" /></span>Com os dados divididos, somente no conjunto de treinamento, os <em>outliers </em>das variáveis numéricas foram removidos, apenas imputando a eles o valor do limite inferior do <em>boxplot</em>, para o caso da variável 'CreditScore', e o valor do limite superior do boxplot, para a variável 'Age'. Essa técnica de tratamento de dados, apesar de alterar a distribuição das variáveis, não gera perda de exemplos.</p>
+							<p><br></p>
+							<p><span class="image right"><img src="https://media-exp1.licdn.com/dms/image/C4E12AQGOV0hRbTSDvg/article-inline_image-shrink_1500_2232/0/1606845986702?e=1615420800&v=beta&t=urMczm5lgRhRfDInILWEcabZvUIeSsJmbpPoE_DinC8" alt="" /></span></p>
+							<p>Após isso, os dados numéricos foram padronizados e foi feito o <em>encoding</em> das variáveis categóricas, tanto no conjunto de treino, quanto no de teste.</p>
+							<p>Partindo para a construção do modelo, foram treinados os seguintes classificadores: Random Forest, Regressor Logístico, Gradient Boost Classifier, K-Nearest Neighbours e Máquinas de Vetores Suporte, e testados no conjunto de teste, produzindo os seguintes resultados.</p>
+							<p><br></p>
+							<div class="table-wrapper">
+								<table class="center">
+									<thead>
+										<tr>
+											<th>Classificador</th>
+											<th>Acurácia</th>
+											<th>Recall</th>
+											<th>F1-Score</th>
+											<th>ROC-AUC</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>Random Forest</td>
+											<td>0.865</td>
+											<td>0.490</td>
+											<td>0.598</td>
+											<td>0.726</td>
+										</tr>
+										<tr>
+											<td>Regressor Logístico</td>
+											<td>0.719</td>
+											<td>0.722</td>
+											<td>0.512</td>
+											<td>0.720</td>
+										</tr>
+										<tr>
+											<td>XGBoost Classifier</td>
+											<td>0.861</td>
+											<td>0.5</td>
+											<td>0.594</td>
+											<td>0.727</td>
+										</tr>
+										<tr>
+											<td>K-Nearest Neighbors</td>
+											<td>0.822</td>
+											<td>0.373</td>
+											<td>0.412</td>
+											<td>0.655</td>
+										</tr>
+										<tr>
+											<td>Support Vector Clf.</td>
+											<td>0.858</td>
+											<td>0.366</td>
+											<td>0.513</td>
+											<td>0.675</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<p>As métricas levadas em consideração para avaliação dos classificadores foram a acurácia, que mede o total de acertos de ambas as classes com relação ao total de exemplos, e o <em>recall</em>, que mede a taxa de acertos da classe positiva. Da tabela acima, percebemos que nenhum classificador apresentou um <strong>resultado satisfatório</strong>, pois, ou apresentaram recall menor que 0.5, isto é, não estão conseguindo classificar corretamente a classe positiva, ou apresentaram acurácia inferior a proporção das classes majoritária, que, no nosso caso, é 0.8.</p>
+							<p>A causa desse problema era, primordialmente, o desbalanceamento das classes e, para corrigir isso, foi usada a técnica de sobre amostragem <a href="https://www.jair.org/index.php/jair/article/view/10302" target="_blank" rel="nofollow noopener">SMOTE</a>. Após a construção de novos exemplos da classe minoritária, os classificadores foram novamente treinados e testados, conforme os resultados mostrados na tabela abaixo.</p>
+							<div class="table-wrapper">
+								<table class="center">
+									<thead>
+										<tr>
+											<th>Classificador</th>
+											<th>Acurácia</th>
+											<th>Recall</th>
+											<th>F1-Score</th>
+											<th>ROC-AUC</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>Random Forest</td>
+											<td>0.845</td>
+											<td>0.578</td>
+											<td>0.603</td>
+											<td>0.746</td>
+										</tr>
+										<tr>
+											<td>Regressor Logístico</td>
+											<td>0.681</td>
+											<td>0.778</td>
+											<td>0.499</td>
+											<td>0.717</td>
+										</tr>
+										<tr>
+											<td>XGBoost Classifier</td>
+											<td>0.843</td>
+											<td>0.66</td>
+											<td>0.631</td>
+											<td>0.775</td>
+										</tr>
+										<tr>
+											<td>K-Nearest Neighbors</td>
+											<td>0.708</td>
+											<td>0.742</td>
+											<td>0.509</td>
+											<td>0.721</td>
+										</tr>
+										<tr>
+											<td>Support Vector Clf.</td>
+											<td>0.803</td>
+											<td>0.729</td>
+											<td>0.602</td>
+											<td>0.776</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<p>A técnica utilizada entregou uma melhora considerável dos classificadores, principalmente o Random Forest, cujo recall teve <strong>aumento </strong>de quase 18%, e o Gradient Boost Classifier, cujo recall aumentou 32%, preservando, ambos, boa acurácia.</p>
+							<p>Esses dois classificadores passaram por uma etapa adicional para otimização de seus hiperparâmetros, por meio da técnica de busca randomizada; entretanto, somente o Random Forest conseguiu melhorar ainda mais seu desempenho aumentando seu recall para 0.644, ou seja, uma melhora de aproximadamente 11% na capacidade de predição da classe positiva (clientes em fuga).</p>
+							<p>Finalmente, o Gradient Boost Classifier e o Random Forest, com seus hiperparâmetros otimizados, foram combinados com o Regressor Logístico, devido a sua superioridade de predição da classe positiva, isto é, elevado <em>recall,</em> com relação aos demais classificadores. O método de combinação de classificadores escolhido foi o que implementa o voto de maioria "suave", que consiste, basicamente, em classificar um exemplo a partir da predição do classificador unitário que apresentar maior valor quando multiplicado por um peso. Os resultados do classificador combinado foram os seguintes:</p>
+							<ul>
+								<li>Acurácia: 0.827;</li>
+								<li>Recall: 0.735;</li>
+								<li>F1-Score: 0.635;</li>
+								<li>ROC-AUC: 0.793</li>
+							</ul>
+							<p>Esses resultados mostram um modelo com acurácia acima da proporção de classes e com boa capacidade de previsão de classes <strong>minoritárias</strong>, que, no nosso caso, representam os clientes em fuga.</p>
+							<p>Ainda, uma etapa complementar foi realizada para identificar quais atributos do conjunto de dados são relevantes na predição das classes. Essa etapa é importante, já que a redução de atributos diminui a complexidade computacional do modelo. Para a realização dessa tarefa, o Random Forest foi utilizado para captar as "feature importances", isto é, a importância de cada atributo, gerando o seguinte resultado:</p>
+							
+							<div class="table-wrapper">
+										<table class="center">
+											<thead>
+												<tr>
+													<th>Feature</th>
+													<th>Importance</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Age</td>
+													<td>0.225344</td>
+												</tr>
+												<tr>
+													<td>NumOfProducts</td>
+													<td>0.191784</td>
+												</tr>
+												<tr>
+													<td>IsActiveMember</td>
+													<td>0.186443</td>
+												</tr>
+												<tr>
+													<td>Gender</td>
+													<td>0.111735</td>
+												</tr>
+												<tr>
+													<td>OneHot__x0_France</td>
+													<td>0.088020</td>
+												</tr>
+												<tr>
+													<td>OneHot__x0_Germany</td>
+													<td>0.086478</td>
+												</tr>
+												<tr>
+													<td>OneHot__x0_Spain</td>
+													<td>0.034390</td>
+												</tr>
+												<tr>
+													<td>HasCrCard</td>
+													<td>0.033715</td>
+												</tr>
+												<tr>
+													<td>Balance</td>
+													<td>0.024883</td>
+												</tr>
+												<tr>
+													<td>Tenure</td>
+													<td>0.006473</td>
+												</tr>
+												<tr>
+													<td>EstimatedSalary</td>
+													<td>0.005421</td>
+												</tr>
+												<tr>
+													<td>CreditScore</td>
+													<td>0.005314</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+							
+							<p>Como era de se esperar e confirmando a análise realizada no começo desse artigo, a idade é fator determinante para detectar a fuga de clientes, seguido da quantidade de produtos adquiridos, se o cliente é ativo ou não, seu gênero e a sua localização geográfica, especialmente a França e a Alemanha. O modelo final foi treinado somente com os atributos relevantes e testado novamente, obtendo um resultado semelhante ao modelo treinado com todos os atributos:</p>
+							<ul>
+								<li>Acurácia: 0.815 (-1,45%)</li>
+								<li>Recall: 0.752 (+2,27%)</li>
+								<li>F1-Score: 0.624 (-1,73%)</li>
+								<li>ROC-AUC: 0.791 (-0,25%)</li>
+							</ul>
+							<p>O modelo final reduzido preservou as principais características do modelo completo, em que foram notadas apenas pequenas variações. Além disso, um modelo que necessita de menos variáveis é mais prático para o usuário final, uma vez que precisa de menos dados para conseguir uma predição confiável.</p>
+							<h2>O Resultado</h2>
+							<p>A fuga de clientes é um problema que tem a capacidade de arruinar uma empresa e pode ser ocasionado por diversos fatores, como, por exemplo, preços mais interessantes em outras empresas, pouco engajamento, baixa qualidade dos produtos ofertados, entre outros. Por isso, é muito importante estar antenado à evasão de clientes e sempre buscar formas de combatê-la.</p>
+							<p>Esse artigo trouxe a elaboração de um classificador que prevê a probabilidade de um cliente entrar em <em>churn </em>ou não. Passou por uma análise exploratória dos dados, engenharia de atributos, construção e otimização de modelos unitários, até a combinação desses modelos, gerando o classificador final. Esse modelo final possui 82% de acurácia, com bom desempenho na previsão das classes minoritárias, estando pronto para ser colocado em produção e com espaço para ser ainda mais otimizado.</p>
+							<p>O modelo obtido pode atuar facilmente como um instrumento de predição de fuga de clientes, auxiliando gestores a detectar a probabilidade de um cliente romper seu contrato com a empresa, permitindo a ele elaborar estratégias de incentivo à permanência e combate à fuga de clientes, consequentemente reduzindo a queda de faturamento decorrente desse problema.</p>
+							
+						</div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+						<!--
+							<section>
+								<h2>Get in touch</h2>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<input type="text" name="name" id="name" placeholder="Name" />
+										</div>
+										<div class="field half">
+											<input type="email" name="email" id="email" placeholder="Email" />
+										</div>
+										<div class="field">
+											<textarea name="message" id="message" placeholder="Message"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send" class="primary" /></li>
+									</ul>
+								</form>
+							</section>-->
+							<section>
+								<h2>Siga</h2>
+								<ul class="icons">
+									<li><a href="https://www.linkedin.com/in/raffael-luna-cardoso/" class="icon brands style2 fa-linkedin" target="_blank" rel="noopener noreferrer"><span class="label">Twitter</span></a></li>
+									<li><a href="https://github.com/raffaelluna" class="icon brands style2 fa-github" target="_blank" rel="noopener noreferrer"><span class="label">GitHub</span></a></li>
+									<li><a href="https://raffaelluna.medium.com" class="icon brands style2 fa-medium" target="_blank" rel="noopener noreferrer"><span class="label">Instagram</span></a></li>
+									<li><a href="mailto:raffael.luna@gmail.com" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+								</ul>
+							</section>
+							<!--
+							<ul class="copyright">
+								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+							-->
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
